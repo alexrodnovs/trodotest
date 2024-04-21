@@ -1,0 +1,13 @@
+body {
+    background-color: lightgray;
+}
+
+.sort-icon {
+    margin-left: 5px;
+}
+.sort-icon.asc::after {
+    content: "\f0de";
+}
+.sort-icon.desc::after {
+    content: "\f0dd";
+}
