@@ -16,13 +16,13 @@ Before you begin, ensure you have the following installed:
 4. **Lando (inside WSL 2)**: Install Lando inside your Ubuntu WSL 2 environment. Run /bin/bash -c "$(curl -fsSL https://get.lando.dev/setup-lando.sh)"
 6. **Docker Desktop for Windows**: Install Docker Desktop for Windows on your system. You can download it from the [official Docker website](https://www.docker.com/products/docker-desktop/).
 
+
 ## Step 1: Clone Symfony Project
 
-Clone your Symfony project repository or create a new Symfony project.
-
-```bash
-mkdir src && cd src && mkdir trodotest && cd trodotest
-git clone alexrodnovs/trodotest
+```ubuntu bash
+mkdir src && cd src
+git clone https://github.com/alexrodnovs/trodotest.git
+cd trodotest
 ```
 
 ## Step 2: Start Lando
@@ -32,6 +32,28 @@ Start Lando for your Symfony project.
 ```bash
 lando start
 ```
+
+## Step 3: Run migrations
+```bash
+lando php bin/console doctrine:migrations:migrate
+```
+## Step 3: Run command to fill rates
+```bash
+lando php bin/console app:fetch-and-store-rates
+```
+## Step 4: Fill database with fixtures(for testing purposes)
+Fixtures will fill currencyrates with random rates, for previous 25 days.
+```bash
+lando php bin/console doctrine:fixtures:load
+```
+## Step 5: Setup cronjobs
+Cron will run every day at 2 AM
+```bash
+crontab -e
+```
+Select editor
+Add && save 
+* 2 * * * cd ~/src/trodotest/ && lando php bin/console app:fetch-and-store-rates >> ~/cron.log 2>&1
 
 This command will build and start the Lando environment for your Symfony project.
 
