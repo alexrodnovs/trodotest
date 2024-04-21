@@ -5,8 +5,6 @@ namespace App\Entity;
 use App\Repository\CurrencyRatesRepository;
 use DateTime;
 use Doctrine\ORM\Mapping as ORM;
-use Gedmo\Mapping\Annotation as Gedmo;
-use Gedmo\Timestampable\Traits\Timestampable;
 
 #[ORM\Entity(repositoryClass: CurrencyRatesRepository::class)]
 class CurrencyRates

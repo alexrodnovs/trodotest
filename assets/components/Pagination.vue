@@ -32,7 +32,3 @@ export default {
   }
 }
 </script>
-
-<style>
-/* Add your pagination styles here */
-</style>

@@ -14,7 +14,7 @@ class AnyApi {
         $client = HttpClient::create();
         $params = [
             'query' => [
-                'apiKey' => 13,
+                'apiKey' => $this->apiKey,
                 'base'   => $base,
             ]
         ];

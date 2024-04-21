@@ -22,10 +22,13 @@ class AppFixtures extends Fixture
                 $lastUpdate   = $date->modify('-1 day');
                 $currencyRate = new CurrencyRates();
 
-                $currencyRate->setCurrencyFrom(CurrencyRates::BASE_CURRENCY);
-                $currencyRate->setCurrencyTo($rate->getCurrencyTo());
-                $currencyRate->setRate($randomRate);
-                $currencyRate->setDate(clone $lastUpdate);
+                $currencyRate
+                    ->setCurrencyFrom(CurrencyRates::BASE_CURRENCY)
+                    ->setCurrencyTo($rate->getCurrencyTo())
+                    ->setRate($randomRate)
+                    ->setDate(clone $lastUpdate)
+                ;
+
                 $manager->persist($currencyRate);
             }
 
